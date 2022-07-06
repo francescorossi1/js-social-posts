@@ -23,8 +23,8 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
 # Consigli del giorno:
  Ragioniamo tanto sulla definizione dell'oggetto, se sbagliamo quello tutto diventa più difficile! */
 
- let postCounter = 0;
- const postList = [
+let postCounter = 0;
+const postList = [
     {
         id: `${++postCounter}`,
         name: 'Phil Mangione',
@@ -45,4 +45,40 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
     },
 ]
 
-console.log(postList)
+const postDisplay = document.getElementById('container');
+let postContent = '';
+
+for(item in postList){
+    const {name, profilePic, date, caption, img, likeCounter} = postList[item];
+    postContent += `<div class="post">
+    <div class="post__header">
+      <div class="post-meta">
+        <div class="post-meta__icon">
+          <img class="profile-pic" src="${profilePic}" alt="${name}" />
+        </div>
+        <div class="post-meta__data">
+          <div class="post-meta__author">${name}</div>
+          <div class="post-meta__time">${date}</div>
+        </div>
+      </div>
+    </div>
+    <div class="post__text">${caption}</div>
+    <div class="post__image">
+      <img src="${img}" alt="" />
+    </div>
+    <div class="post__footer">
+      <div class="likes js-likes">
+        <div class="likes__cta">
+          <a class="like-button js-like-button" href="#" data-postid="1">
+            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+            <span class="like-button__label">Mi Piace</span>
+          </a>
+        </div>
+        <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${likeCounter}</b> persone</div>
+      </div>
+    </div>
+  </div>`
+
+}
+
+postDisplay.innerHTML = postContent;
