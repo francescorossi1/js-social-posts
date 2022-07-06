@@ -48,8 +48,9 @@ const postList = [
 const postDisplay = document.getElementById('container');
 let postContent = '';
 
+
 for(item in postList){
-    const {name, profilePic, date, caption, img, likeCounter} = postList[item];
+    const {id,name, profilePic, date, caption, img, likeCounter} = postList[item];
     postContent += `<div class="post">
     <div class="post__header">
       <div class="post-meta">
@@ -69,12 +70,12 @@ for(item in postList){
     <div class="post__footer">
       <div class="likes js-likes">
         <div class="likes__cta">
-          <a class="like-button js-like-button" href="#" data-postid="1">
+          <a class="like-button js-like-button" href="#" data-postid="${id}">
             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
             <span class="like-button__label">Mi Piace</span>
           </a>
         </div>
-        <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${likeCounter}</b> persone</div>
+        <div class="likes__counter">Piace a <b id="like-counter-${id}" class="js-likes-counter">${likeCounter}</b> persone</div>
       </div>
     </div>
   </div>`
@@ -82,3 +83,20 @@ for(item in postList){
 }
 
 postDisplay.innerHTML = postContent;
+
+const likeButtons = document.querySelectorAll('.js-like-button');
+const likeCounters = document.querySelectorAll('.js-likes-counter');
+
+
+for(let i = 0; i < likeButtons.length; i++){
+    const currentButton = likeButtons[i];
+    currentButton.addEventListener('click',() => {
+        currentButton.classList.add('like-button--liked');
+        const currentCounter = likeCounters[i];
+        let currentLikes = parseInt(postList[i].likeCounter);
+        currentCounter.innerText = ++currentLikes;
+        
+        
+        
+    })
+    }
