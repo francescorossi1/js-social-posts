@@ -22,3 +22,27 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
  3. Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
 # Consigli del giorno:
  Ragioniamo tanto sulla definizione dell'oggetto, se sbagliamo quello tutto diventa più difficile! */
+
+ let postCounter = 0;
+ const postList = [
+    {
+        id: `${++postCounter}`,
+        name: 'Phil Mangione',
+        profilePic: 'https://unsplash.it/300/300?image=15',
+        date: '03-06-2022',
+        caption: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
+        img: 'https://unsplash.it/600/300?image=171',
+        likeCounter: '80'
+    },
+    {
+        id: `${++postCounter}`,
+        name: 'Sofia Perlari',
+        profilePic: 'https://unsplash.it/300/300?image=20',
+        date: '03-05-2022',
+        caption: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
+        img: 'https://unsplash.it/600/300?image=167',
+        likeCounter: '203'
+    },
+]
+
+console.log(postList)
